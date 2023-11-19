@@ -4,10 +4,10 @@
     <img src="../assets/mylogo.jpg" alt="">
     <!-- login form header -->
     <h1>Login to your Dashborad</h1>
-    <form >
-        <input type="email" name="email" placeholder="Enter Your Email" id="emailInput">
-        <input type="password" name="password" placeholder="Enter the Password" id="passwordInput">
-        <button type="submit" id="subButton"><span>Login to Dashboard</span></button>
+    <form [formGroup]="loginInterfaceForm" (ngSubmit)="submitLogin()">
+        <input type="email" name="email" placeholder="Enter Your Email" id="emailInput" formControlName="email">
+        <input type="password" name="password" placeholder="Enter the Password" id="passwordInput" formControlName="password">
+        <button id="subButton" type="submit" [disabled]="loginInterfaceForm.invalid"><span>Login to Dashboard</span></button>
     </form>
 </div>
 
