@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* add global background for all pages */
+body{
+    background: url(./assets/1697046000693.png) no-repeat fixed center;
+}
