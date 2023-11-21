@@ -33,17 +33,12 @@ export class LoginComponent implements OnInit {
           if(user.data()['Password'] == password){
             console.log('Signed in Successfully');
             // this.router.navigateByUrl('')
-          }else{
-            this.errorMessage= 'Password wrong please provide the Ceorrect password';
-            setTimeout(() => {
-              this.errorMessage= '';
-            }, 4000);
           }
         }else{
-          this.errorMessage= 'Email wrong please Signup with this Email then return to this page and Login';
+          this.errorMessage= 'Invalid Email or Password please check again';
           setTimeout(() => {
             this.errorMessage= '';
-          }, 4000);
+          }, 5000);
         }
       })
     }).catch(err=>{

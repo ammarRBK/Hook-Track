@@ -22,18 +22,17 @@ export class FirebaseserviceService {
     appId: "1:334595696604:web:d95f3a110c7fad420f1119",
     measurementId: "G-ESHBR52JXP"
   };
- 
   
-  
+  // Initialize Firebase
+  app= firebase.initializeApp(this.firebaseConfig)
+  // Initialize Cloud Firestore and get a reference to the service
+  db= firebase.firestore()
   
   constructor() {  
-    // Initialize Firebase
-    firebase.initializeApp(this.firebaseConfig)
+    
   }
 
   getUsers(){
-    const db= firebase.firestore()
-    // Initialize Cloud Firestore and get a reference to the service
-    return db.collection("dashboard_users").get()
+    return this.db.collection("dashboard_users").get()
   }
 }
