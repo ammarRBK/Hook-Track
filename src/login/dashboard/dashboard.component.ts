@@ -12,7 +12,9 @@ export class DashboardComponent implements OnInit {
 
   constructor(private fservice:FirebaseserviceService){}
   ngOnInit(): void {
-        
+        this.fservice.getCompletedvisits().then(visits=>{
+          console.log(visits);
+        })
   }
 
   

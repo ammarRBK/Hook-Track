@@ -5,7 +5,7 @@ import { retry, catchError } from 'rxjs/operators';
 import { initializeApp } from "firebase/app";
 import firebase from "firebase/compat/app";
 import 'firebase/compat/firestore';
-import { getFirestore, collection, query, where, doc, getDoc, getDocs } from"firebase/firestore";
+import { getFirestore, collection, query, where, getDoc, getDocs } from"firebase/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +35,48 @@ export class FirebaseserviceService {
     return await getDocs(user);
   }
 
-  getCompletedvisits(){
-    
+  async getCompletedvisits(){
+    let completed_visits:any=[];
+    const Query= query(collection(this.db, "usersV2"))
+    const querySnapshot = await getDocs(Query);
+    querySnapshot.forEach(async (user)=> {
+      const myquery= query(collection(this.db, "completed visits"), where('userId', '==', user.data()['id']))
+      const visitsQuerySnapshots= await getDocs(myquery);
+
+      if(visitsQuerySnapshots.size > 0){
+        visitsQuerySnapshots.forEach(visit=>{
+          let fullVisit= visit.data();
+
+          completed_visits.push({
+            address: fullVisit['address'],
+            classy: fullVisit['classy'],
+            completedDate: fullVisit['completedDate'],
+            dateOfNextVisit: fullVisit['dateOfNextVisit'],
+            dateOfVisit: fullVisit['dateOfVisit'],
+            dist: fullVisit['dist'],
+            governorate: fullVisit['governorate'],
+            image: fullVisit['image'],
+            isMocking: fullVisit['isMocking'],
+            line: fullVisit['line'],
+            name: fullVisit['name'],
+            note: fullVisit['note'],
+            phone: fullVisit['phone'],
+            planed: fullVisit['planed'],
+            searchName: fullVisit['searchName'],
+            specialty: fullVisit['specialty'],
+            status: fullVisit['status'],
+            time: fullVisit['time'],
+            type: fullVisit['type'],
+            username: user.data()['username'],
+            visitId: fullVisit['visitId']
+          })
+        })
+      }
+      
+      // let userNmae= user.data()['username'];
+      // let id= user.data()['id'];
+      // users.push({username: userNmae, id: id})
+    })
+    return completed_visits;
   }
 }
