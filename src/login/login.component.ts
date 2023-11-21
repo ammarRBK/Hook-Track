@@ -27,22 +27,49 @@ export class LoginComponent implements OnInit {
     let email= this.loginInterfaceForm.value.email;
     let password= this.loginInterfaceForm.value.password;
 
-    this.fservice.getUsers().then(users=>{
-      users.forEach(user=>{
-        if(user.data()['Email'] == email){
-          if(user.data()['Password'] == password){
-            console.log('Signed in Successfully');
-            // this.router.navigateByUrl('')
+    this.fservice.getUsers(email).then(querySnapshot=>{
+      if(querySnapshot.size > 0){
+        querySnapshot.forEach(user=>{
+          if(user.exists()){
+            if(user.data()['Password'] == password){
+              console.log("Log in the User")
+            }else{
+              this.errorMessage= 'Wrong Password please check Again';
+              setTimeout(() => {
+                this.errorMessage='';
+              }, 5000);
+            }
           }
-        }else{
-          this.errorMessage= 'Invalid Email or Password please check again';
-          setTimeout(() => {
-            this.errorMessage= '';
-          }, 5000);
-        }
-      })
-    }).catch(err=>{
-      console.log(err);
+        })
+      }else{
+        this.errorMessage= 'Invalid Email or User not SignedUp please check again';
+        setTimeout(() => {
+          this.errorMessage='';
+        }, 5000);
+      }
+      
+        
     })
+
+    // this.fservice.getUsers(email)
+    // .then(querySnapshot=>{
+    //   querySnapshot.forEach(user=>{
+    //     if(user){
+    //       if(user.data()['Email'] == email){
+    //         if(user.data()['Password'] == password){
+    //           console.log("Signed in Successfully")
+    //         }
+    //       }
+    //     }else{
+    //       this.errorMessage= 'Invalid Email or Password please check again';
+    //       setTimeout(() => {
+    //         this.errorMessage= '';
+    //       }, 5000);
+    //     }
+    //   })
+    // }).catch(err=>{
+    //   this.errorMessage= err;
+    // })
+      
   }
 }

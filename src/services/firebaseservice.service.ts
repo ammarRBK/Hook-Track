@@ -4,8 +4,8 @@ import { throwError, Observable } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { initializeApp } from "firebase/app";
 import firebase from "firebase/compat/app";
-import "firebase/compat/firestore";
-import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import { getFirestore, collection, query, where, doc, getDoc, getDocs } from"firebase/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -26,13 +26,16 @@ export class FirebaseserviceService {
   // Initialize Firebase
   app= firebase.initializeApp(this.firebaseConfig)
   // Initialize Cloud Firestore and get a reference to the service
-  db= firebase.firestore()
+  db= getFirestore(this.app);
   
-  constructor() {  
-    
+  constructor() { }
+
+  async getUsers(email:string){
+    const user= query(collection(this.db, "dashboard_users"), where("Email", "==", email))
+    return await getDocs(user);
   }
 
-  getUsers(){
-    return this.db.collection("dashboard_users").get()
+  getCompletedvisits(){
+    
   }
 }
