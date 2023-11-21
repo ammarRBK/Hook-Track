@@ -4,9 +4,11 @@ import { Router } from '@angular/router';
 import { FirebaseserviceService } from 'src/services/firebaseservice.service';
 
 @Component({
+  standalone: true,
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  imports: [ReactiveFormsModule, FormsModule]
 })
 export class LoginComponent implements OnInit {
   loginInterfaceForm: FormGroup;
