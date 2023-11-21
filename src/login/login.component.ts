@@ -35,9 +35,15 @@ export class LoginComponent implements OnInit {
             // this.router.navigateByUrl('')
           }else{
             this.errorMessage= 'Password wrong please provide the Ceorrect password';
+            setTimeout(() => {
+              this.errorMessage= '';
+            }, 4000);
           }
         }else{
           this.errorMessage= 'Email wrong please Signup with this Email then return to this page and Login';
+          setTimeout(() => {
+            this.errorMessage= '';
+          }, 4000);
         }
       })
     }).catch(err=>{

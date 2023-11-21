@@ -41,6 +41,10 @@ h1{
     margin-left: 3%;
 }
 
+.loginCard #errorMessage{
+    color: red;
+}
+
 #subButton:disabled{
     font-size: large;
     margin-left: 18%;

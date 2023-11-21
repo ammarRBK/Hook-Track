@@ -7,7 +7,7 @@
     <form [formGroup]="loginInterfaceForm" (ngSubmit)="submitLogin()">
         <input type="email" name="email" placeholder="Enter Your Email" id="emailInput" formControlName="email">
         <input type="password" name="password" placeholder="Enter the Password" id="passwordInput" formControlName="password">
-        <h3>{{errorMessage}}</h3>
+        <h4 id="errorMessage">{{errorMessage}}</h4>
         <!-- button wil be disabled if the form fields empty or email input is not an email -->
         <button id="subButton" type="submit" [disabled]="loginInterfaceForm.invalid"><span>Login to Dashboard</span></button>
     </form>
