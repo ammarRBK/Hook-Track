@@ -41,7 +41,17 @@ h1{
     margin-left: 3%;
 }
 
-#subButton{
+#subButton:disabled{
+    font-size: large;
+    margin-left: 18%;
+    margin-top: 5%;
+    width: 60%;
+    height: 40px;
+    background-color: grey;
+    color: black;
+}
+
+#subButton:enabled{
     font-size: large;
     margin-left: 18%;
     margin-top: 5%;
@@ -53,14 +63,14 @@ h1{
     cursor: pointer;
 }
 
-#subButton span {
+#subButton:enabled span {
     cursor: pointer;
     display: inline-block;
     position: relative;
     transition: 0.5s;
   }
   
-  #subButton span:after {
+  #subButton:enabled span:after {
     content: '\00bb';
     position: absolute;
     opacity: 0;
@@ -69,11 +79,11 @@ h1{
     transition: 0.5s;
   }
   
-  #subButton:hover span {
+  #subButton:enabled:hover span {
     padding-right: 25px;
   }
   
-  #subButton:hover span:after {
+  #subButton:enabled:hover span:after {
     opacity: 1;
     right: 0;
   }
