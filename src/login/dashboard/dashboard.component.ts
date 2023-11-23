@@ -37,19 +37,35 @@ export class DashboardComponent implements OnInit {
   }
   
   searchforVisit(ev:any){
-    let table= document.getElementById('visitsTable');
-    let row= table?.getElementsByTagName('tr')[1];
-    let tds= row?.getElementsByTagName('td');
     var searchText= (<HTMLInputElement>document.getElementById('searchInput'))!.value;
-    for(let i=0; i < tds!.length; i++){
+    let table= document.getElementById('visitsTable');
+    let rows= table?.getElementsByTagName('tr');
+    
+    for(let i=0; i < rows!.length; i++){
+      var tds= rows![i].getElementsByTagName('td');
       
-      console.log(searchText)
-      var tdContent= tds![i].textContent;
-      if(tdContent?.toLowerCase().indexOf(searchText)! > -1){
-        tds![i].style.display= "";
-      }else{
-        tds![i].style.display= "none";
+      for (var j = 0; j < tds.length; j++) {
+        const element = rows![i].getElementsByTagName('td')[j]
+        if(element){
+          if (element.innerHTML.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
+            rows![i].style.display= '';
+            break;
+          }else{
+            rows![i].style.display = "none";
+          }
+        }
+        
       }
     }
+    // let tds= row?.getElementsByTagName('td');
+    // ;
+    // for(let i=0; i < tds!.length; i++){
+    //   var tdContent= tds![i].textContent;
+    //   if(tdContent?.toLowerCase().indexOf(searchText)! > -1){
+    //     tds![i].style.display= "";
+    //   }else{
+    //     tds![i].style.display= "none";
+    //   }
+    // }
   }
 }

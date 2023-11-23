@@ -40,8 +40,8 @@
 }
 
 .header a.active:hover {
-    background-color: #ddd;
-    color: black;
+    background-color: green;
+    color: white;
 }
 
 .header-right {
