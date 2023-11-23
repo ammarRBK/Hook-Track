@@ -28,10 +28,15 @@
   color: black;
 }
 
-#searchInput{
-  margin-left: 20px;
+.header #searchInput{
   margin-top: 10px;
   width: 30%;
+  height: 30px;
+  border: 2px solid #f2f2f2;
+  border-radius: 30px;
+  padding-left: 5px;
+  background: transparent;
+  color: white;
 }
 
 .header a.active {

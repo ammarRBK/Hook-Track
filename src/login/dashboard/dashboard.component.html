@@ -1,6 +1,7 @@
 <div class="header">
     <a href="login/dashboard" class="logo">Hook Track</a>
-    <input type="text" name="searchInput" id="searchInput" value="" placeholder="Enter you Text to Search for inside th Table" (keyup)="searchforVisit($event)">
+    <strong><label for="searchInput" style="margin-left: 20px; color: white;">Search For:</label></strong>
+    <input type="text" name="searchInput" id="searchInput" value="" (keyup)="searchforVisit($event)">
     <div class="header-right">
         <a class="active" id="downloadLink" (dblclick)="downloadAsExcel(visitsTable)">Double click to Download Table as EXCEL file</a>
         <button >Log out</button>

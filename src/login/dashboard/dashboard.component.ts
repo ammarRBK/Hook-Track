@@ -57,15 +57,5 @@ export class DashboardComponent implements OnInit {
         
       }
     }
-    // let tds= row?.getElementsByTagName('td');
-    // ;
-    // for(let i=0; i < tds!.length; i++){
-    //   var tdContent= tds![i].textContent;
-    //   if(tdContent?.toLowerCase().indexOf(searchText)! > -1){
-    //     tds![i].style.display= "";
-    //   }else{
-    //     tds![i].style.display= "none";
-    //   }
-    // }
   }
 }
