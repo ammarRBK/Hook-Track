@@ -4,6 +4,7 @@
   overflow: hidden;
   background-color: #5d8324;
   padding: 20px 10px;
+  width: 208.2%;
 }
 
 .header a {
@@ -54,13 +55,16 @@
 }
 
 table {
+  margin-top: 2%;
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
   border: 1px solid #ddd;
+  background-color: #ddd;
 }
 
 th, td {
+  border: 1px solid white;
   text-align: left;
   padding: 8px;
 }

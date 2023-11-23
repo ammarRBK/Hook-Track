@@ -1,13 +1,14 @@
 <div class="header">
     <a href="login/dashboard" class="logo">Hook Track</a>
     <div class="header-right">
-        <a class="active" >Download Table as EXCEL file</a>
+        <a class="active">Download Table as EXCEL file</a>
         <a >Log out</a>
     </div>
 </div>
 <div class="mytable">
-    <table>
+    <table #visitsTable>
         <tr>
+            <th>#</th>
             <th>User name</th>
             <th>Name</th>
             <th>Phone number</th>
@@ -30,7 +31,8 @@
             <th>Note</th>
             <th>Visit ID</th>
         </tr>
-        <tr *ngFor="let visit of completedVisits">
+        <tr *ngFor="let visit of completedVisits; index as i">
+            <td>{{i+1}}</td>
             <td>{{visit.username}}</td>
             <td>{{visit.name}}</td>
             <td>{{visit.phone}}</td>
@@ -44,7 +46,7 @@
             <td>{{visit.time}}</td>
             <td>{{visit.classy}}</td>
             <td>{{visit.governorate}}</td>
-            <td>{{visit.address}}</td>
+            <td style="width: 80px;">{{visit.address}}</td>
             <td>{{visit.dist}}</td>
             <td>{{visit.image}}</td>
             <td>{{visit.dateOfVisit}}</td>

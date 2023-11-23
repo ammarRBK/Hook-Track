@@ -21,5 +21,7 @@ export class DashboardComponent implements OnInit {
         })
   }
 
-  
+  downloadAsExcel(tableElement: any){
+    
+  }  
 }
