@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
     const ctx = { worksheet: 'completedVists', table: table.innerHTML };
 
     const link= document.getElementById('downloadLink');
-    link?.setAttribute('download',`completed-vists.xlsx`);
+    link?.setAttribute('download',`completed-vists.xls`);
     link?.setAttribute('href',uri + base64(format(template, ctx)));
     link?.click()
 
