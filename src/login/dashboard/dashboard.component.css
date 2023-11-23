@@ -4,7 +4,7 @@
   overflow: hidden;
   background-color: #5d8324;
   padding: 20px 10px;
-  width: 208.2%;
+  width: 185%;
 }
 
 .header a {
@@ -26,6 +26,12 @@
 .header a:hover {
   background-color: #ddd;
   color: black;
+}
+
+#searchInput{
+  margin-left: 20px;
+  margin-top: 10px;
+  width: 30%;
 }
 
 .header a.active {

@@ -68,7 +68,9 @@ export class FirebaseserviceService {
             time: fullVisit['time'],
             type: fullVisit['type'],
             username: user.data()['username'],
-            visitId: fullVisit['visitId']
+            visitId: fullVisit['visitId'],
+            group: user.data()['group'],
+            subgroup: user.data()['subgroup']
           })
         })
       }

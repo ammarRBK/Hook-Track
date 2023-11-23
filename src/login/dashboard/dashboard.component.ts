@@ -36,5 +36,22 @@ export class DashboardComponent implements OnInit {
     link?.setAttribute('href',uri + base64(format(template, ctx)));
     link?.click()
 
-  }  
+  }
+  
+  searchforVisit(ev:any){
+    let table= document.getElementById('visitsTable');
+    let row= table?.getElementsByTagName('tr')[1];
+    let tds= row?.getElementsByTagName('td');
+    var searchText= (<HTMLInputElement>document.getElementById('searchInput'))!.value;
+    for(let i=0; i < tds!.length; i++){
+      
+      console.log(searchText)
+      var tdContent= tds![i].textContent;
+      if(tdContent?.toLowerCase().indexOf(searchText)! > -1){
+        tds![i].style.display= "";
+      }else{
+        tds![i].style.display= "none";
+      }
+    }
+  }
 }
