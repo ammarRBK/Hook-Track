@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   constructor(private fservice:FirebaseserviceService, private router: Router){}
   ngOnInit(): void {
     
-    !this.fservice.changeLoginStatus ? this.router.navigateByUrl('login') : console.log('user LoggedIn');
+    this.fservice.changeLoginStatus ? console.log('user LoggedIn') : this.router.navigateByUrl('login')
 
     this.fservice.getCompletedvisits().then(visits=>{
       this.completedVisits= visits;
@@ -25,20 +25,21 @@ export class DashboardComponent implements OnInit {
   }
 
   downloadAsExcel(tableElement: Element){
+
     const uri = 'data:application/vnd.ms-excel;base64,';
-    const template = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>`;
-    const base64 = function(s: any) { return window.btoa(unescape(encodeURIComponent(s))) };
-    const format = function(s: any, c: any) { return s.replace(/{(\w+)}/g, function(m: any, p: any) { return c[p]; }) };
+    const template = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head ><meta charset="utf-8"><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>`;
+    const base64 = function(s:any) { return window.btoa(unescape(encodeURIComponent(s))) };
+    const format = function(s:any, c:any) { return s.replace(/{(\w+)}/g, function(m:any, p:any) { return c[p]; }) };
 
     const table = tableElement;
-    const ctx = { worksheet: 'completedVists', table: table.innerHTML };
+    const ctx = { worksheet: 'completedVisits', table: table.innerHTML };
 
-    const link= document.getElementById('downloadLink');
-    link?.setAttribute('download',`completed-vists.xls`);
-    link?.setAttribute('href',uri + base64(format(template, ctx)));
-    link?.click()
-
-  }
+    const link = document.createElement('a');
+    link.download = `visits-completed.xls`;
+    link.href = uri + base64(format(template, ctx));
+    link.click()
+    }
+  
   
   searchforVisit(ev:any){
     var searchText= (<HTMLInputElement>document.getElementById('searchInput'))!.value;
