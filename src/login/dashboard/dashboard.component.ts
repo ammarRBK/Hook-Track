@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FirebaseserviceService } from 'src/services/firebaseservice.service';
 
 @Component({
@@ -13,11 +14,14 @@ export class DashboardComponent implements OnInit {
 
   completedVisits: any;
   trafoItem: any;
-  constructor(private fservice:FirebaseserviceService){}
+  constructor(private fservice:FirebaseserviceService, private router: Router){}
   ngOnInit(): void {
-        this.fservice.getCompletedvisits().then(visits=>{
-          this.completedVisits= visits;
-        })
+    
+    !this.fservice.changeLoginStatus ? this.router.navigateByUrl('login') : console.log('user LoggedIn');
+
+    this.fservice.getCompletedvisits().then(visits=>{
+      this.completedVisits= visits;
+    })
   }
 
   downloadAsExcel(tableElement: Element){
@@ -57,5 +61,10 @@ export class DashboardComponent implements OnInit {
         
       }
     }
+  }
+
+  logOut(){
+    this.fservice.changeLoginStatus= false;
+    this.router.navigateByUrl('login');
   }
 }

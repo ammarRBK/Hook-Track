@@ -4,7 +4,7 @@
   overflow: hidden;
   background-color: #5d8324;
   padding: 20px 10px;
-  width: 195%;
+  width: 200%;
 }
 
 .header a {
@@ -26,6 +26,19 @@
 .header a:hover {
   background-color: #ddd;
   color: black;
+}
+
+button{
+  background-color: red;
+  color: white;
+  width: 60px;
+  height: 50px;
+  margin-left: 10px;
+}
+
+button:hover{
+  color: black;
+  background-color: white;
 }
 
 .header #searchInput{

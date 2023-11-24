@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
           if(user.exists()){
             if(user.data()['Password'] == password){
               console.log("Log in the User")
+              this.fservice.changeLoginStatus= true;
               this.router.navigateByUrl('login/dashboard');
             }else{
               this.errorMessage= 'Wrong Password please check Again';

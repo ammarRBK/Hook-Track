@@ -11,6 +11,8 @@ import { getFirestore, collection, query, where, getDoc, getDocs } from"firebase
   providedIn: 'root'
 })
 export class FirebaseserviceService {
+
+  loggedIn: boolean= false;
   // web app's Firebase configuration
   firebaseConfig = {
     apiKey: "AIzaSyDuIS3Xp1cH_QfEOBB3bmO4AnCDOeZfbaw",
@@ -74,11 +76,15 @@ export class FirebaseserviceService {
           })
         })
       }
-      
-      // let userNmae= user.data()['username'];
-      // let id= user.data()['id'];
-      // users.push({username: userNmae, id: id})
     })
     return completed_visits;
+  }
+
+  set changeLoginStatus(status: boolean){
+    this.loggedIn= status;
+  }
+
+  get changeLoginStatus(){
+    return this.loggedIn;
   }
 }

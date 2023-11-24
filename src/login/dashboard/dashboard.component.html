@@ -4,7 +4,7 @@
     <input type="text" name="searchInput" id="searchInput" value="" (keyup)="searchforVisit($event)">
     <div class="header-right">
         <a class="active" id="downloadLink" (dblclick)="downloadAsExcel(visitsTable)">Double click to Download Table as EXCEL file</a>
-        <button >Log out</button>
+        <button (click)="logOut()">Log out</button>
     </div>
 </div>
 <div class="mytable" id="visitsTable">
