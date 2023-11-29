@@ -1,12 +1,12 @@
 * {box-sizing: border-box;}
-
+/* style the div parent header */
 .header {
   overflow: hidden;
   background-color: #5d8324;
   padding: 20px 10px;
   width: 200%;
 }
-
+/* style all links inside the div with class header  */
 .header a {
   float: left;
   color: white;
@@ -17,7 +17,7 @@
   line-height: 25px;
   border-radius: 4px;
 }
-
+/* style only the link with 'logo' class */
 .header a.logo {
   font-size: 25px;
   font-weight: bold;
@@ -27,7 +27,7 @@
   background-color: #ddd;
   color: black;
 }
-
+/* style the log out button */
 button{
   background-color: red;
   color: white;
@@ -41,7 +41,7 @@ button:hover{
   color: black;
   background-color: white;
 }
-
+/* style th search box input  */
 .header #searchInput{
   margin-top: 10px;
   width: 30%;
@@ -78,7 +78,7 @@ button:hover{
     float: none;
   }
 }
-
+/* style whole dashboard table */
 table {
   margin-top: 2%;
   border-collapse: collapse;
@@ -87,7 +87,7 @@ table {
   border: 1px solid #ddd;
   background-color: #ddd;
 }
-
+/* style thw cells inside table */
 th, td {
   border: 1px solid white;
   text-align: left;

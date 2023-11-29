@@ -33,22 +33,28 @@ export class FirebaseserviceService {
   constructor() { }
 
   async getUsers(email:string){
+    //query the user by the email that came from client
     const user= query(collection(this.db, "dashboard_users"), where("Email", "==", email))
+    //send the query result to the client
     return await getDocs(user);
   }
 
   async getCompletedvisits(){
     let completed_visits:any=[];
+    //get all users that got visits in the database
     const Query= query(collection(this.db, "usersV2"))
     const querySnapshot = await getDocs(Query);
+    //loop over the users came from database
     querySnapshot.forEach(async (user)=> {
+      //query user completed visits
       const myquery= query(collection(this.db, "completed visits"), where('userId', '==', user.data()['id']))
       const visitsQuerySnapshots= await getDocs(myquery);
-
+      //if query found a completed visits
       if(visitsQuerySnapshots.size > 0){
+        //loop over visits
         visitsQuerySnapshots.forEach(visit=>{
           let fullVisit= visit.data();
-
+          //push visit details with user name and user group and user subgroub
           completed_visits.push({
             address: fullVisit['address'],
             classy: fullVisit['classy'],

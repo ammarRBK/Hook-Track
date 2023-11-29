@@ -1,8 +1,10 @@
 <div class="header">
     <a href="login/dashboard" class="logo">Hook Track</a>
     <strong><label for="searchInput" style="margin-left: 20px; color: white;">Search For:</label></strong>
+    <!-- run searchforVisit method every user change happens -->
     <input type="text" name="searchInput" id="searchInput" value="" (keyup)="searchforVisit($event)">
     <div class="header-right">
+        <!-- run download as excel file method and pass the whole dashboard table element to convert it’s content when user double press the a tag  -->
         <a class="active" id="downloadLink" (dblclick)="downloadAsExcel(visitsTable)">Double click to Download Table as EXCEL file</a>
         <button (click)="logOut()">Log Out</button>
     </div>
@@ -10,6 +12,7 @@
 <div class="mytable" id="visitsTable">
     <table #visitsTable>
         <tr>
+            <!-- table head cells -->
             <th>#</th>
             <th>User name</th>
             <th>Name</th>
@@ -34,6 +37,7 @@
             <th>Date Of Next Visit</th>
             <th>Note</th>
         </tr>
+        <!-- repeat the table row as length as the completedVisits array and pass the visit details in cells -->
         <tr *ngFor="let visit of completedVisits; index as i">
             <td>{{i+1}}</td>
             <td>{{visit.username}}</td>

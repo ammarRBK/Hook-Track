@@ -24,10 +24,14 @@ export class LoginComponent implements OnInit {
   }
 
   submitLogin(){
+    //get user email and password inputs
     let email= this.loginInterfaceForm.value.email;
     let password= this.loginInterfaceForm.value.password;
-
+    //get a query result from the auth service 
     this.fservice.getUsers(email).then(querySnapshot=>{
+      //check if query has a result or not
+      //if it has continue to authinticate the user
+      //either the user is not in the database so show the error message
       if(querySnapshot.size > 0){
         querySnapshot.forEach(user=>{
           if(user.exists()){
@@ -37,6 +41,7 @@ export class LoginComponent implements OnInit {
               this.router.navigateByUrl('login/dashboard');
             }else{
               this.errorMessage= 'Wrong Password please check Again';
+              //hide error message after 5 seconds
               setTimeout(() => {
                 this.errorMessage='';
               }, 5000);
@@ -51,27 +56,6 @@ export class LoginComponent implements OnInit {
       }
       
         
-    })
-
-    // this.fservice.getUsers(email)
-    // .then(querySnapshot=>{
-    //   querySnapshot.forEach(user=>{
-    //     if(user){
-    //       if(user.data()['Email'] == email){
-    //         if(user.data()['Password'] == password){
-    //           console.log("Signed in Successfully")
-    //         }
-    //       }
-    //     }else{
-    //       this.errorMessage= 'Invalid Email or Password please check again';
-    //       setTimeout(() => {
-    //         this.errorMessage= '';
-    //       }, 5000);
-    //     }
-    //   })
-    // }).catch(err=>{
-    //   this.errorMessage= err;
-    // })
-      
+    })   
   }
 }
